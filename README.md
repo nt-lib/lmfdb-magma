@@ -10,6 +10,11 @@ pip3 install -U "lmfdb-lite[pgbinary] @ git+https://github.com/roed314/lmfdb-lit
 
 # Example usage:
 
+All functions in this package are prefixed with `MD` in order to avoid namespace collisions with other packages.
+
+At the moment there is only a high level implementation for creating subgroups
+in GL_2(Zhat). This is done as below
+
 ```magma
 > AttachSpec("lmfdb-magma/lmfdb.spec");
 > MDGL2FromLabel("11.12.1.a.1");
@@ -21,6 +26,20 @@ Generators:
     [6 3]
     [0 3]
 ```
+
+There is also lower level functionality to obtain any lmfdb object from any table listed on https://www.lmfdb.org/api/ using the label:
+```magma
+> AttachSpec("lmfdb-magma/lmfdb.spec");
+> MDLMFDBLookup("gps_gl2zhat_fine", "11.12.1.a.1");
+Associative Array with index universe String structure
+> G := MDLMFDBLookup("gps_gl2zhat_fine", "11.12.1.a.1");
+> G;
+Associative Array with index universe String structure
+> G["generators"];
+[
+    [ 5, 2, 0, 2 ],
+    [ 6, 3, 0, 3 ]
+]
 
 # Troubleshooting
 
@@ -53,7 +72,7 @@ b.m", line 14, column 18:
 Runtime error in 'Pipe': Subprocess failed with exit status 1
 ```
 
-The important line that indicates this is the line
+The important line that indicates this is what is going wrong is the line
 ```
 ModuleNotFoundError: No module named 'lmf'
 ```
