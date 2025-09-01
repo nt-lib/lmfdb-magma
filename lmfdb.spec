@@ -1,0 +1,13 @@
+{
+  Magma
+  {
+    +magma.spec
+  }
+  magma_src
+  {
+    config.m
+    db.m
+    gps_gl2zhat.m
+    utils.m
+  }
+}
