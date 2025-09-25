@@ -1,6 +1,6 @@
 // A global variable to store all the data in
 config := NewStore();
-StoreSet(config, "python_interpreter_path", "python");
+StoreSet(config, "python_interpreter_path", "python3");
 
 
 intrinsic MDGetConfig() -> Rec
