@@ -11,7 +11,7 @@ def py_to_magma(value):
         case str():
             return f'"{value}"'
         case list():
-            return "[" + ",".join(py_to_magma(v) for v in value) + "]"
+            return "[*" + ",".join(py_to_magma(v) for v in value) + "*]"
         case dict():
             return "MDLisToAssoc([*" + ",".join(f"<{py_to_magma(k)},{py_to_magma(v)}>" for k,v in value.items()) + "*])"
         case _:

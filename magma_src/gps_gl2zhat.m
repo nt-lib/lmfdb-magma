@@ -3,7 +3,7 @@ intrinsic MDGL2FromAssoc(A::Assoc) -> GrpMat
     return GL2FromGenerators(
         A["level"],
         A["index"],
-        A["generators"]
+        [[gi : gi in g] : g in A["generators"]]
     );
 end intrinsic;
 
