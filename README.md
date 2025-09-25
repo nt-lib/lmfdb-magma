@@ -4,7 +4,7 @@ A magma interfact to the LMFDB.
 
 # Requirements
 
-This requires python and lmfdb-lite. lmfdb-lite is installed as follows:
+This requires python 3.10 or later and lmfdb-lite. lmfdb-lite is installed as follows:
 
 ```bash
 pip3 install -U "lmfdb-lite[pgbinary] @ git+https://github.com/roed314/lmfdb-lite.git"
