@@ -1,3 +1,12 @@
+try:
+    from sage.rings.real_mpfr import RealLiteral
+except ImportError:
+    # Sage not installed
+    SAGE_MODE = False
+    RealLiteral = float
+else:
+    SAGE_MODE = True
+ 
 def py_to_magma(value):
     """Convert Python value to Magma."""
     match value:
@@ -6,7 +15,7 @@ def py_to_magma(value):
             return '"None"'
         case bool():
             return "true" if value else "false"
-        case int() | float():
+        case int() | float() | RealLiteral():
             return str(value)
         case str():
             return f'"{value}"'
