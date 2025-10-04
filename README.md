@@ -30,7 +30,7 @@ in GL_2(Zhat). This is done as below
 
 ```magma
 > AttachSpec("lmfdb-magma/lmfdb.spec");
-> MDGL2FromLabel("11.12.1.a.1");
+> G := MDGL2FromLMFDBLabel("11.12.1.a.1"); G;
 MatrixGroup(2, IntegerRing(11)) of order 2^2 * 5^2 * 11
 Generators:
     [5 2]
@@ -38,6 +38,9 @@ Generators:
 
     [6 3]
     [0 3]
+> // We can also lookup the label given the group
+> MDGL2LMFDBLabel(G);
+11.12.1.a.1
 ```
 
 ## Lookup by label
