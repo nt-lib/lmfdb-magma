@@ -1,6 +1,17 @@
 # LMFDB-magma
 
-A magma interfact to the LMFDB.
+A magma interface to the [LMFDB](https://beta.lmfdb.org/ModularCurve/Q/).
+
+# Security warning
+
+This code has not been designed with security in mind, and might lead to arbitrary code exectution on the machine it is used on if either one of the following two things is compromised:
+
+1. The data in the database at devmirror.lmfdb.xyz .
+2. Your connection to devmirror.lmfdb.xyz .
+
+Note that lmfdb-lite/psycodict/psycopg2 [doesn't require a fully verified ssl connection by default](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNECT-SSLMODE) making a man in the middle attack feasible regarding point 2. On top of this lmfdb.xyz doesn't have a valid ssl certificate at the time of writing so it is not even possible to run lmfdb-lite with `sslmode=verify-full`.
+
+It is therefore advised to only use lmfdb-magma on a (virtual) machine whose secturity you don't care to much about, like a temporary docker container.
 
 # Requirements
 
