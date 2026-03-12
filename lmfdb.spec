@@ -3,12 +3,5 @@
   {
     +magma.spec
   }
-  magma_src
-  {
-    config.m
-    conversion.m
-    db.m
-    gps_gl2zhat.m
-    utils.m
-  }
+  +lmfdb-no-dependencies.spec
 }
