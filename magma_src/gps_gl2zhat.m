@@ -20,15 +20,33 @@ intrinsic MDGL2LMFDBLookup(G::GrpMat) -> Assoc
 
     // technically genus and index are not needed, but they make the search faster
     search_params := [*
+        <"index", GL2Index(G)>,
         <"level", GL2Level(G)>,
         <"genus", GL2Genus(G)>,
-        <"index", GL2Index(G)>,
+        <"contains_negative_one",GL2ContainsNegativeOne(G)>,
         <"canonical_generators", GL2CanonicalGenerators(G)>
     *];
     result := MDLMFDBSearch("gps_gl2zhat_fine", search_params);
 
     assert #result eq 1;
     return result[1];
+end intrinsic;
+
+intrinsic MDGL2LMFDBLookup(groups::SeqEnum) -> Assoc
+{Lookup the GL2 object G in the LMFDB database for all G in the list of groups and return all stored data as list of associative arrays.}
+
+    // technically genus and index are not needed, but they make the search faster
+    search_params := [[*
+        <"index", GL2Index(G)>,
+        <"level", GL2Level(G)>,
+        <"genus", GL2Genus(G)>,
+        <"contains_negative_one",GL2ContainsNegativeOne(G)>,
+        <"canonical_generators", GL2CanonicalGenerators(G)>
+    *] : G in groups];
+    result := MDLMFDBSearchBatch("gps_gl2zhat_fine", search_params);
+
+    //assert #result eq 1;
+    return [r[1] : r in result];
 end intrinsic;
 
 intrinsic MDGL2LMFDBLabel(G::GrpMat) -> MonStgElt
